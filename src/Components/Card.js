@@ -1,16 +1,20 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, Image } from 'react-native';
 
 export default function Card(props) {
+    const navigation = useNavigation();
     return (
-        <View style={estilos.card}>
+
+
+        <View style={estilos.card} >
             <Image source={require('../Images/cafezinho expresso.png')}
                 style={estilos.imagem}
             />
             <Text style={estilos.titulo}>{props.title}</Text>
             <Text style={estilos.descricao}>{props.description}</Text>
             <Text style={estilos.preco}>{props.money}</Text>
-            <TouchableOpacity style={estilos.botao} onPress={props.onPress}>
+            <TouchableOpacity style={estilos.botao} onPress={navigation.navigate('Descricao')}>
                 <Text style={estilos.textoBotao}>+</Text>
             </TouchableOpacity>
         </View>
