@@ -1,9 +1,9 @@
-import Descricao from './src/Pages/DescricaoProd';
+import Principal from './src/Pages/PagPrincipal';
 
 export default function App() {
   return (
     <>
-    <Descricao/>
+    <Principal/>
     </>
   );
 }
