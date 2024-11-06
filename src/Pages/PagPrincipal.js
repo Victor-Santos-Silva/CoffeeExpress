@@ -16,7 +16,7 @@ export default function Principal() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4c332c',
+        backgroundColor: '#38241D',
     },
     image: {
         width: '100%',
