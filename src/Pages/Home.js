@@ -37,9 +37,9 @@ export default function Home() {
 const estilo = StyleSheet.create({
     container: {
         display: 'flex',
-        flexDirection: 'row',  // Exibe os cards na mesma linha
-        flexWrap: 'wrap',      // Permite que os cards quebrem para a próxima linha se necessário
-        justifyContent: 'space-between', // Espaça os cards igualmente
-        padding: 10,  // Adiciona um espaçamento interno ao container
+        flexDirection: 'row', 
+        flexWrap: 'wrap',     
+        justifyContent: 'space-between', 
+        padding: 10,
     },
 });
