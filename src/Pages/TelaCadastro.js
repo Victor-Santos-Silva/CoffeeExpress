@@ -33,28 +33,28 @@ export default function Cadastro() {
         <Text style={styles.label}>Nome</Text>
         <TextInput 
         style={styles.input} 
-        placeholder="Digite seu nome"
+        placeholder="Digite o nome do produto"
         value={nomeProduto}
         onChangeText={setNomeProduto}
         />
 
-        <Text style={styles.label} >Telefone</Text>
+        <Text style={styles.label} >Descrição</Text>
         <TextInput 
         style={styles.input} 
-        placeholder="Digite seu telefone" 
+        placeholder="Digite a descrição do produto" 
         value={descricao}
         onChangeText={setDescricao}
         />
 
-        <Text style={styles.label} >Telefone</Text>
+        <Text style={styles.label} >Preço</Text>
         <TextInput 
         style={styles.input} 
-        placeholder="Digite seu telefone" 
+        placeholder="Digite o preço do produto" 
         value={preco}
         onChangeText={setPreco}
         />
 
-        <Button title="Enviar contato" onPress={enviarProduto}/>
+        <Button title="Cadastrar Produto" onPress={enviarProduto}/>
 
     </View>
 
