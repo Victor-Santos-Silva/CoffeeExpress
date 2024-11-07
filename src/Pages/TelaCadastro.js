@@ -15,7 +15,7 @@ export default function Cadastro() {
 
     const novoProduto = { nomeProduto, descricao, preco };
 
-    axios.post('http://10.0.2.2:3000/cadastro', novoProduto)
+    axios.post('http://10.0.2.2:3000/produtos', novoProduto)
     .then(resposta => {
       if (resposta.status === 201) {
         Alert.alert("Sucesso, contato adicionado!");

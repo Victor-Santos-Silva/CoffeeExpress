@@ -7,11 +7,12 @@ import Cadastro from './src/Pages/TelaCadastro';
 export default function App() {
   return (
     <>
-      <Cadastro/>
-      {/* <Principal/>
-       <Descricao/>
-      <Header />
-      <MainNavigation /> */}
+      {/* <Header />
+      
+      <Principal />
+      <Descricao /> */}
+      <Cadastro />
+      {/* <MainNavigation /> */}
     </>
   );
 }
