@@ -14,7 +14,7 @@ export default function Card(props) {
             <Text style={estilos.titulo}>{props.title}</Text>
             <Text style={estilos.descricao}>{props.description}</Text>
             <Text style={estilos.preco}>{props.money}</Text>
-            <TouchableOpacity style={estilos.botao} onPress={navigation.navigate('Descricao')}>
+            <TouchableOpacity style={estilos.botao} onPress={props.onPress}>
                 <Text style={estilos.textoBotao}>+</Text>
             </TouchableOpacity>
         </View>
