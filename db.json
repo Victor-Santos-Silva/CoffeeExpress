@@ -1,3 +1,16 @@
 {
-    "produtos": []
+  "produtos": [
+    {
+      "id": "c70e",
+      "nomeProduto": "Cafe expresso",
+      "descricao": "Cafe quente express",
+      "preco": "50"
+    },
+    {
+      "id": "5f9f",
+      "nomeProduto": "Chocolate Quente",
+      "descricao": "Chocolate quente nescau.",
+      "preco": "35"
+    }
+  ]
 }

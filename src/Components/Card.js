@@ -1,21 +1,18 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, Image } from 'react-native';
 
 export default function Card(props) {
-    const navigation = useNavigation();
     return (
-
-
-        <View style={estilos.card} >
-            <Image source={require('../Images/cafezinho expresso.png')}
+        <View style={estilos.card}>
+            <Image
+                source={require('../Images/cafezinho expresso.png')}  // Imagem estática. Pode modificar se necessário
                 style={estilos.imagem}
             />
             <Text style={estilos.titulo}>{props.title}</Text>
             <Text style={estilos.descricao}>{props.description}</Text>
             <Text style={estilos.preco}>{props.money}</Text>
             <TouchableOpacity style={estilos.botao} onPress={props.onPress}>
-                <Text style={estilos.textoBotao}>+</Text>
+                <Text style={estilos.textoBotao}>Excluir</Text>
             </TouchableOpacity>
         </View>
     );
@@ -35,40 +32,34 @@ const estilos = StyleSheet.create({
         shadowRadius: 3,
         elevation: 5,
     },
-
     botao: {
         backgroundColor: '#C67C4E',  // Cor de fundo
         paddingVertical: 10,  // Altura do botão
         paddingHorizontal: 20,  // Largura do botão
         borderRadius: 18,  // Bordas arredondadas
-        width: 50,
-        left: 110
+        width: 100,
+        left: 55,  // Ajustando a posição do botão
     },
-
     textoBotao: {
         color: 'white',
-        fontSize: 20,
+        fontSize: 16,
         textAlign: 'center',
     },
-
     imagem: {
         width: 160,
         height: 160,
         borderRadius: 15,
     },
-
     titulo: {
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 20,
     },
-
     descricao: {
-        color: 'gray'
+        color: 'gray',
     },
-
     preco: {
         top: 35,
         left: 5,
-        fontSize: 15
-    }
+        fontSize: 15,
+    },
 });
