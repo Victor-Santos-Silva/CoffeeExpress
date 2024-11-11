@@ -12,7 +12,7 @@ export default function App() {
 
       {/*<Principal />*/}
       {/*<Descricao /> */}
-      {/* <Cadastro /> */}
+       <Cadastro /> 
       {/*<MainNavigation />*/}
       {/* <VisualizarProduto /> */}
     </>
