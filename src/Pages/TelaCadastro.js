@@ -148,10 +148,11 @@ const styles = StyleSheet.create({
   imageButton: {
     backgroundColor: "#6B4226",
     paddingVertical: 12,
-    paddingHorizontal: 5,
     borderRadius: 20,
     alignItems: 'center',
     marginBottom: 15,
+    width: 200,
+    margin: 'auto'    
   },
   imageButtonText: {
     color: '#fff',
