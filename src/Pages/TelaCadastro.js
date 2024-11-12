@@ -28,6 +28,12 @@ export default function Cadastro() {
     }
   };
 
+  const handlePrecoChange = (value) => {
+    // Remove qualquer caractere não numérico e aplica formatação
+    const numericValue = value.replace(/[^0-9]/g, '');
+    setPreco((numericValue / 100).toFixed(2).replace('.', ','));
+  };
+
   const enviarProduto = async () => {
     if (!nomeProduto || !descricao || !preco || !imagem) {
       Alert.alert("Erro, por favor preencha todos os campos!");
@@ -74,7 +80,7 @@ export default function Cadastro() {
           style={styles.input} 
           placeholder="Digite o preço do produto" 
           value={preco}
-          onChangeText={setPreco}
+          onChangeText={handlePrecoChange}
         />
 
         <Text style={styles.label}>Descrição:</Text>
@@ -92,7 +98,7 @@ export default function Cadastro() {
         {imagem && <Image source={{ uri: imagem }} style={styles.previewImage} />}
       </View>
 
-      <View style={styles.button}>
+      <View style={styles.buttonCad}>
         <TouchableOpacity style={styles.buyButton} onPress={enviarProduto}>
           <Text style={styles.buyButtonText}>Cadastrar Produto</Text>
         </TouchableOpacity>
@@ -178,8 +184,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: "center",
   },
-  button: {
+  buttonCad: {
     paddingLeft: 20,
-    paddingRight: 20,
+    paddingRight: 20
   }
 });
