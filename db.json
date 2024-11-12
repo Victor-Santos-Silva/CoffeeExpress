@@ -11,6 +11,20 @@
       "nomeProduto": "Chocolate Quente",
       "descricao": "Chocolate quente nescau.",
       "preco": "35"
+    },
+    {
+      "id": "e638",
+      "nomeProduto": "Cafe",
+      "descricao": "ergdzfvc",
+      "preco": "45",
+      "imagem": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fcoffee-express-ef977939-b23f-4cdd-a198-c737b7f80277/ImagePicker/d2d1eb4e-7109-4cda-8921-279149f0da96.jpeg"
+    },
+    {
+      "id": "ceb2",
+      "nomeProduto": "cafe",
+      "descricao": "erdgf",
+      "preco": "4,65",
+      "imagem": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fcoffee-express-ef977939-b23f-4cdd-a198-c737b7f80277/ImagePicker/92c55592-a785-4d60-8282-46c7ea4debb6.jpeg"
     }
   ]
 }
