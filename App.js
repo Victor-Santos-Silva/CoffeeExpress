@@ -8,12 +8,11 @@ import VisualizarProduto from './src/Pages/VisualizarProduto';
 export default function App() {
   return (
     <>
-      {/* <Header />*/}
-
-      {/*<Principal />*/}
+      <Header />
+      {/* <Principal /> */}
       {/*<Descricao /> */}
-       <Cadastro /> 
-      {/*<MainNavigation />*/}
+      {/* <Cadastro /> */}
+      <MainNavigation />
       {/* <VisualizarProduto /> */}
     </>
   );
