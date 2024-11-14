@@ -1,30 +1,35 @@
+import { useNavigation } from "@react-navigation/native";
 import React from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Principal() {
+    const navigation = useNavigation();
     return (
-        <View style={styles.container}>
-            <Image source={require('../assets/img/principal.png')} style={styles.image}/>
-            <View>
-                <Text style={styles.titulo}>Hora de uma pausa para o café....</Text>
-                <Text style={styles.texto}>Sua dose diária de cerveja fresca entregue em
-                sua porta. Comece sua jornada do café agora!</Text>
-            </View>
+        <ScrollView>
 
-            <View>
-                <Text style={styles.pontinhos}>...</Text>
-            </View>
+            <View style={styles.container}>
+                <Image source={require('../assets/img/principal.png')} style={styles.image} />
+                <View>
+                    <Text style={styles.titulo}>Hora de uma pausa para o café....</Text>
+                    <Text style={styles.texto}>Sua dose diária de cerveja fresca entregue em
+                        sua porta. Comece sua jornada do café agora!</Text>
+                </View>
 
-            <View style={styles.button}>
-            <TouchableOpacity style={styles.buyButton}>
-            <Text style={styles.buyButtonText}>Acessar</Text>
-          </TouchableOpacity>
+                <View>
+                    <Text style={styles.pontinhos}>...</Text>
+                </View>
+
+                <View style={styles.button}>
+                    <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('Home')}>
+                        <Text style={styles.buyButtonText}>Acessar</Text>
+                    </TouchableOpacity>
+                </View>
+
             </View>
-            
-        </View>
-        
+        </ScrollView>
+
     )
-} 
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -38,8 +43,8 @@ const styles = StyleSheet.create({
     titulo: {
         color: "white",
         fontSize: 25,
-        paddingTop:20,
-        paddingBottom:20,
+        paddingTop: 20,
+        paddingBottom: 20,
         textAlign: "center",
         fontWeight: "bold"
     },
@@ -66,11 +71,11 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         paddingHorizontal: 20,
         borderRadius: 30,
-      },
-      buyButtonText: {
+    },
+    buyButtonText: {
         color: '#fff',
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: "center",
-      }
+    }
 });

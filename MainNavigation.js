@@ -1,21 +1,19 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from './src/Pages/Home'
-import Descricao from './src/Pages/DescricaoProd'
-import VisualizarProduto from './src/Pages/VisualizarProduto'
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Principal from './src/Pages/PagPrincipal';
+import Home from './src/Pages/Home';
+import Descricao from './src/Pages/DescricaoProd';
 const Stack = createNativeStackNavigator();
 
-
-export default function MainNavigation() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-                <Stack.Screen name="Descricao" component={Descricao} />
-                <Stack.Screen name="VisualizarProduto" component={VisualizarProduto} />
-                
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
-} 
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Principal">
+        <Stack.Screen name="Principal" component={Principal} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Descricao" component={Descricao} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
