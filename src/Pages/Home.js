@@ -1,13 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Card from "../Components/Card";
-
+import Header from "../Components/Header"
 export default function Home() {
 
     const navigation = useNavigation();
 
     return (
         <ScrollView>
+            <Header />
             <View style={estilo.container}>
 
                 <Card

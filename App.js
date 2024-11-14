@@ -1,19 +1,18 @@
 import MainNavigation from './MainNavigation';
-import Header from './src/Components/Header';
-import Descricao from './src/Pages/DescricaoProd';
-import Principal from './src/Pages/PagPrincipal';
-import Cadastro from './src/Pages/Login';
-import VisualizarProduto from './src/Pages/VisualizarProduto';
 
 export default function App() {
   return (
     <>
+<<<<<<< HEAD
       <Header />
       {/* <Principal /> */}
       {/*<Descricao /> */}
       <Cadastro />
       
       {/* <VisualizarProduto /> */}
+=======
+      <MainNavigation />
+>>>>>>> ea7e3af44018fd797ac534101c56e1495ce1fcb8
     </>
   );
 }
