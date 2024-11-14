@@ -12,29 +12,16 @@ export default function Principal() {
                 <Text style={styles.texto}>Use o script para atrair nossos clientes, não se esquece de ser gentil e educado,
                     sempre lembrar de desejar um ótimo dia a eles, e que você também tenha um!
                 </Text>
-            </View>
-
-            <ScrollView>
-                <View style={styles.container}>
-                    <Image source={require('../assets/img/principal.png')} style={styles.image} />
-                    <View>
-                        <Text style={styles.titulo}>Hora de uma pausa para o café....</Text>
-                        <Text style={styles.texto}>Sua dose diária de cerveja fresca entregue em
-                            sua porta. Comece sua jornada do café agora!</Text>
-                    </View>
-
-                    <View>
-                        <Text style={styles.pontinhos}>...</Text>
-                    </View>
-
-                    <View style={styles.button}>
-                        <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('Home')}>
-                            <Text style={styles.buyButtonText}>Acessar</Text>
-                        </TouchableOpacity>
-                    </View>
-
+                <View>
+                    <Text style={styles.pontinhos}>...</Text>
                 </View>
-            </ScrollView>
+
+                <View style={styles.button}>
+                    <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('Home')}>
+                        <Text style={styles.buyButtonText}>Acessar</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
     )
 }
@@ -46,7 +33,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 550,
+        height: 500,
     },
     titulo: {
         color: "white",
