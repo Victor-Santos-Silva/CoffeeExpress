@@ -21,6 +21,7 @@ export default function Home() {
                     description="Chá verde fresco"
                     money="R$ 6,00"
                     onPress={() => navigation.navigate('Descricao')}
+
                 />
                 <Card
                     title="Chá"

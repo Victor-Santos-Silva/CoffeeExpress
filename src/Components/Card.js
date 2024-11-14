@@ -11,17 +11,20 @@ export default function Card(props) {
             <Text style={estilos.titulo}>{props.title}</Text>
             <Text style={estilos.descricao}>{props.description}</Text>
             <Text style={estilos.preco}>{props.money}</Text>
-            <TouchableOpacity style={estilos.botao} onPress={props.onPress}>
-                <Text style={estilos.textoBotao}>Excluir</Text>
-            </TouchableOpacity>
+            <View style={estilos.botoes}>
+                <TouchableOpacity style={estilos.botaoSaibaMais} onPress={props.onPress}>
+                    <Text style={estilos.textoBotao}>Saiba Mais</Text>
+                </TouchableOpacity>
+
+            </View>
         </View>
     );
 }
 
 const estilos = StyleSheet.create({
     card: {
-        width: 180,
-        height: 320,
+        width: 'auto',
+        height: 'auto',
         padding: 10,
         marginBottom: 15,
         backgroundColor: '#fff',
@@ -32,18 +35,18 @@ const estilos = StyleSheet.create({
         shadowRadius: 3,
         elevation: 5,
     },
-    botao: {
-        backgroundColor: '#C67C4E',  // Cor de fundo
-        paddingVertical: 10,  // Altura do botão
-        paddingHorizontal: 20,  // Largura do botão
-        borderRadius: 18,  // Bordas arredondadas
-        width: 100,
-        left: 55,  // Ajustando a posição do botão
+    botaoSaibaMais: {
+        backgroundColor: '#C67C4E',
+        borderRadius: 18,
+        top: 10,
+        marginTop: 5
     },
     textoBotao: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 10,
         textAlign: 'center',
+        padding: 5,
+        fontWeight: 'bold'
     },
     imagem: {
         width: 160,
@@ -56,10 +59,13 @@ const estilos = StyleSheet.create({
     },
     descricao: {
         color: 'gray',
+        width: 150,
+        height: 'auto'
     },
     preco: {
-        top: 35,
-        left: 5,
         fontSize: 15,
     },
+    botoes: {
+        marginBottom: 10
+    }
 });
