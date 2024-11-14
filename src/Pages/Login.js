@@ -1,32 +1,26 @@
 import React, { useState } from 'react';
-import { Alert, Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import axios from 'axios';
+import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Cadastro() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
+  const navigation = useNavigation(); // Inicializa a navegação aqui dentro do componente
 
-
-  const acessar = async () => {
+  const acessar = () => {
     if (!usuario || !senha) {
       Alert.alert("Erro, por favor preencha todos os campos!");
       return;
     }
 
-    const acessar = { usuario, senha };
-
-    axios.post('http://10.0.2.2:3000/produtos', acessar)
-      .then(resposta => {
-        if (resposta.status === 201) {
-          Alert.alert("Seja bem-vindo!");
-          setUsuario('');
-          setSenha('');
-        } else {
-          Alert.alert("Erro, falha ao logar.");
-        }
-      })
-      .catch(() => Alert.alert("Erro ao conectar com o servidor."));
+    if (usuario === 'admin' && senha === 'admin') {
+      Alert.alert("Seja bem-vindo!");
+      setUsuario('');
+      setSenha('');
+      navigation.navigate('Home'); // Navega para a tela Home se as credenciais estiverem corretas
+    } else {
+      Alert.alert("Erro, usuário ou senha incorretos.");
+    }
   };
 
   return (
@@ -55,13 +49,12 @@ export default function Cadastro() {
           value={senha}
           onChangeText={setSenha}
         />
-
       </View>
 
       <View style={styles.buttonCad}>
-        <TouchableOpacity style={styles.buyButton} onPress={() => useNavigation.navigate('Home')}>
+        <TouchableOpacity style={styles.buyButton} onPress={acessar}>
           <Text style={styles.buyButtonText}>Acessar</Text>
-        </ TouchableOpacity>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -69,19 +62,20 @@ export default function Cadastro() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white"
+    backgroundColor: "white",
+    flex: 1,
   },
   image: {
     width: 100,
     height: 100,
-    left: 310
+    left: 310,
   },
   coffee: {
     fontSize: 30,
     top: 60,
     textAlign: "center",
     fontWeight: "bold",
-    color: "white"
+    color: "white",
   },
   cabecalho: {
     backgroundColor: "#38241D",
@@ -105,11 +99,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     padding: 10,
-    marginBottom: 20, 
+    marginBottom: 20,
     borderRadius: 20,
   },
   forms: {
-    padding: 10
+    padding: 10,
   },
   buyButton: {
     backgroundColor: '#38241D',
@@ -125,6 +119,6 @@ const styles = StyleSheet.create({
   },
   buttonCad: {
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
   }
 });

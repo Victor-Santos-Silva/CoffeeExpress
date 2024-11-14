@@ -11,8 +11,8 @@ export default function App() {
       <Header />
       {/* <Principal /> */}
       {/*<Descricao /> */}
-      {/* <Cadastro /> */}
-      <MainNavigation />
+      <Cadastro />
+      
       {/* <VisualizarProduto /> */}
     </>
   );

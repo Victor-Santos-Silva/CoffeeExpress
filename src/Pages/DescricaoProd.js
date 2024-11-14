@@ -1,9 +1,8 @@
 import React from 'react'
-import { Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Descricao() {
   return (
-    <ScrollView>
 
       <View style={styles.container}>
         <Image
@@ -33,7 +32,7 @@ export default function Descricao() {
         </View>
 
       </View>
-    </ScrollView>
+
   )
 }
 
@@ -45,12 +44,11 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 370,
+    height: 250,
     resizeMode: 'contain',
-    marginTop: 20,
   },
   descricao: {
-    fontSize: 23,
+    fontSize: 22,
     fontWeight: "bold"
   },
   detalhe: {
@@ -60,18 +58,18 @@ const styles = StyleSheet.create({
   },
   description: {
     paddingTop: 20,
-    fontSize: 20,
+    fontSize: 19,
     fontWeight: "bold"
   },
   texto: {
     paddingTop: 10,
-    fontSize: 17
+    fontSize: 15
   },
   sizeContainer: {
     marginBottom: 15,
   },
   sizeTitle: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "bold",
     marginBottom: 10,
     paddingTop: 15
@@ -81,7 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   sizeOption: {
-    paddingVertical: 10,
+    paddingVertical: 9,
     paddingHorizontal: 35,
     borderRadius: 9,
     borderWidth: 1,
