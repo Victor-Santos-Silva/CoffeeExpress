@@ -18,4 +18,4 @@ export default function MainNavigation() {
             </Stack.Navigator>
         </NavigationContainer>
     )
-} 
+}
