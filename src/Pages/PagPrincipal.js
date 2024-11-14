@@ -5,40 +5,37 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 export default function Principal() {
     const navigation = useNavigation();
     return (
-<<<<<<< HEAD
         <View style={styles.container}>
-            <Image source={require('../assets/img/principal.png')} style={styles.image}/>
+            <Image source={require('../assets/img/principal.png')} style={styles.image} />
             <View>
                 <Text style={styles.titulo}>Hora de uma pausa para o café....</Text>
                 <Text style={styles.texto}>Use o script para atrair nossos clientes, não se esquece de ser gentil e educado,
-                    sempre lembrar de desejar um ótimo dia a eles, e que você também tenha um! 
+                    sempre lembrar de desejar um ótimo dia a eles, e que você também tenha um!
                 </Text>
             </View>
-=======
-        <ScrollView>
->>>>>>> ea7e3af44018fd797ac534101c56e1495ce1fcb8
 
-            <View style={styles.container}>
-                <Image source={require('../assets/img/principal.png')} style={styles.image} />
-                <View>
-                    <Text style={styles.titulo}>Hora de uma pausa para o café....</Text>
-                    <Text style={styles.texto}>Sua dose diária de cerveja fresca entregue em
-                        sua porta. Comece sua jornada do café agora!</Text>
+            <ScrollView>
+                <View style={styles.container}>
+                    <Image source={require('../assets/img/principal.png')} style={styles.image} />
+                    <View>
+                        <Text style={styles.titulo}>Hora de uma pausa para o café....</Text>
+                        <Text style={styles.texto}>Sua dose diária de cerveja fresca entregue em
+                            sua porta. Comece sua jornada do café agora!</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.pontinhos}>...</Text>
+                    </View>
+
+                    <View style={styles.button}>
+                        <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('Home')}>
+                            <Text style={styles.buyButtonText}>Acessar</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 </View>
-
-                <View>
-                    <Text style={styles.pontinhos}>...</Text>
-                </View>
-
-                <View style={styles.button}>
-                    <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('Home')}>
-                        <Text style={styles.buyButtonText}>Acessar</Text>
-                    </TouchableOpacity>
-                </View>
-
-            </View>
-        </ScrollView>
-
+            </ScrollView>
+        </View>
     )
 }
 
