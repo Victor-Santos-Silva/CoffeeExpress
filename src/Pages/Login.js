@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function Cadastro() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
-  const navigation = useNavigation(); // Inicializa a navegação aqui dentro do componente
+  const navigation = useNavigation();
 
   const acessar = () => {
     if (!usuario || !senha) {
@@ -17,7 +17,7 @@ export default function Cadastro() {
       Alert.alert("Seja bem-vindo!");
       setUsuario('');
       setSenha('');
-      navigation.navigate('Home'); // Navega para a tela Home se as credenciais estiverem corretas
+      navigation.navigate('Home');
     } else {
       Alert.alert("Erro, usuário ou senha incorretos.");
     }

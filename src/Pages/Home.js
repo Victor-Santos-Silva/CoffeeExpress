@@ -10,29 +10,32 @@ export default function Home() {
         <ScrollView>
             <Header />
             <View style={estilo.container}>
-
                 <Card
-                    title="Café"
-                    description="Café quente "
+                    imageSource={require('../Images/cafe com leite.png')}
+                    title="Cappuccino Tradicional"
+                    description="Cappuccino "
                     money="R$ 8,00"
                     onPress={() => navigation.navigate('Descricao')}
                 />
                 <Card
-                    title="Chá"
-                    description="Chá verde fresco"
+                    imageSource={require('../Images/outro tipo de cappucino.png')}
+                    title="Cappuccino de Baunilha"
+                    description="Cappuccino"
                     money="R$ 6,00"
                     onPress={() => navigation.navigate('Descricao')}
 
                 />
                 <Card
-                    title="Chá"
-                    description="Chá verde fresco"
+                    imageSource={require('../Images/cappucino.png')}
+                    title="Cappuccino de Canela"
+                    description="Cappuccino"
                     money="R$ 6,00"
                     onPress={() => navigation.navigate('Descricao')}
                 />
                 <Card
-                    title="Chá"
-                    description="Chá verde fresco"
+                    imageSource={require('../Images/cafezinho expresso.png')}
+                    title="Cappuccino de Avelã"
+                    description="Cappuccino"
                     money="R$ 6,00"
                     onPress={() => navigation.navigate('Descricao')}
                 />

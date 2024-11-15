@@ -10,7 +10,7 @@ export default function Header() {
             end={[0, 1]}    // Posição final do gradiente (inferior)
             style={estilos.topo}
         >
-            <Text style={estilos.tituloHeader}>Location</Text>
+            <Text style={estilos.tituloHeader}>Location:</Text>
             <Text style={estilos.subtitulo}>São Paulo, Brazil</Text>
             <Image
                 source={require('../Images/perfil-man.png')}
@@ -31,11 +31,11 @@ const estilos = StyleSheet.create({
 
     tituloHeader: {
         color: "white",
-        fontWeight: "bold",
     },
     
     subtitulo: {
         color: "white",
+        fontWeight: "bold",
     },
 
     imagem: {

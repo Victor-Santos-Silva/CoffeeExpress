@@ -5,7 +5,7 @@ export default function Card(props) {
     return (
         <View style={estilos.card}>
             <Image
-                source={require('../Images/cafezinho expresso.png')}  // Imagem estática. Pode modificar se necessário
+                source={props.imageSource}
                 style={estilos.imagem}
             />
             <Text style={estilos.titulo}>{props.title}</Text>
@@ -13,7 +13,7 @@ export default function Card(props) {
             <Text style={estilos.preco}>{props.money}</Text>
             <View style={estilos.botoes}>
                 <TouchableOpacity style={estilos.botaoSaibaMais} onPress={props.onPress}>
-                    <Text style={estilos.textoBotao}>Saiba Mais</Text>
+                    <Text style={estilos.textoBotao}>+</Text>
                 </TouchableOpacity>
 
             </View>
@@ -23,7 +23,7 @@ export default function Card(props) {
 
 const estilos = StyleSheet.create({
     card: {
-        width: 'auto',
+        width: 180,
         height: 'auto',
         padding: 10,
         marginBottom: 15,
@@ -37,15 +37,16 @@ const estilos = StyleSheet.create({
     },
     botaoSaibaMais: {
         backgroundColor: '#C67C4E',
-        borderRadius: 18,
-        top: 10,
-        marginTop: 5
+        borderRadius: 13,
+        width: 40,
+        height: 40,
+        left: 115,
+        top: -25
     },
     textoBotao: {
         color: 'white',
-        fontSize: 10,
+        fontSize: 28,
         textAlign: 'center',
-        padding: 5,
         fontWeight: 'bold'
     },
     imagem: {
@@ -54,18 +55,22 @@ const estilos = StyleSheet.create({
         borderRadius: 15,
     },
     titulo: {
+        color: '#2F2D2C',
         fontWeight: 'bold',
         fontSize: 20,
+        width: 180,
     },
     descricao: {
-        color: 'gray',
+        color: '#9B9B9B',
         width: 150,
         height: 'auto'
     },
     preco: {
-        fontSize: 15,
+        fontSize: 25,
+        top: 10,
+        fontWeight: 'bold',
+        color: '#2F4B4E'
     },
     botoes: {
-        marginBottom: 10
     }
 });

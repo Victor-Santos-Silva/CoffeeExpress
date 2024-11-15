@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Principal() {
     const navigation = useNavigation();
@@ -17,7 +17,7 @@ export default function Principal() {
                 </View>
 
                 <View style={styles.button}>
-                    <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('Home')}>
+                    <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('Cadastro')}>
                         <Text style={styles.buyButtonText}>Acessar</Text>
                     </TouchableOpacity>
                 </View>
