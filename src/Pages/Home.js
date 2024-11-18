@@ -4,9 +4,9 @@ import Card from "../Components/Card";
 import Header from "../Components/Header"
 import Carrinho from "../Components/Carrinho";
 export default function Home() {
-
+ 
     const navigation = useNavigation();
-
+ 
     return (
         <ScrollView>
             <Header />
@@ -25,7 +25,7 @@ export default function Home() {
                     description="Cappuccino"
                     money="R$ 6,00"
                     onPress={() => navigation.navigate('Descricao')}
-
+ 
                 />
                 <Card
                     imageSource={require('../Images/cappucino.png')}
@@ -45,7 +45,7 @@ export default function Home() {
         </ScrollView >
     );
 }
-
+ 
 const estilo = StyleSheet.create({
     container: {
         display: 'flex',
@@ -55,5 +55,6 @@ const estilo = StyleSheet.create({
         padding: 10,
     },
 });
-
-
+ 
+ 
+ 

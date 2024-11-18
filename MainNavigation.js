@@ -5,18 +5,16 @@ import Principal from './src/Pages/PagPrincipal';
 import Home from './src/Pages/Home';
 import Descricao from './src/Pages/DescricaoProd';
 import Cadastro from './src/Pages/Login';
-import Lista from './src/Pages/Lista';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Principal">
-        <Stack.Screen name="Principal" component={Principal} options={{ headerShown: false }} />
+        <Stack.Screen name="Principal" component={Principal} options={{ headerShown: false }}  />
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-        <Stack.Screen name="Cadastro" component={Cadastro} options={{ headerShown: false }} />
-        <Stack.Screen name="Descricao" component={Descricao} />
-        <Stack.Screen name="Lista" component={Lista} />
+        <Stack.Screen name="Descricao" component={Descricao}  />
+        <Stack.Screen name="Cadastro" component={Cadastro}  />
       </Stack.Navigator>
     </NavigationContainer>
   );

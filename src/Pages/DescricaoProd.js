@@ -1,69 +1,39 @@
-import React, { useState } from 'react';
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import axios from 'axios';
+import React from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Descricao() {
-  const [loading, setLoading] = useState(false);
-
-  const handleAddProduct = async () => {
-    setLoading(true);
-
-    const productData = {
-      name: "Expresso Coffee",
-      description: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk.",
-      details: "with Chocolate",
-      sizeOptions: ["S", "M", "L"],
-      selectedSize: "M",
-      price: 4.53,
-      image: "coffee1.png" // Ajuste para o nome ou URL do arquivo da imagem
-    };
-
-    try {
-      const response = await axios.post('http://10.0.2.2:3000/produtos', productData);
-      Alert.alert('Success', 'Product added successfully!');
-      console.log(response.data);
-    } catch (error) {
-      Alert.alert('Error', 'Failed to add product.');
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/img/coffee1.png')}
-        style={styles.image} />
-      <Text style={styles.descricao}>Expresso Coffee</Text>
-      <Text style={styles.detalhe}>with Chocolate</Text>
-      <Text style={styles.description}>Description</Text>
-      <Text style={styles.texto}>
-        A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
-        and 85 ml of fresh milk the fo.. Read More
-      </Text>
 
-      <View style={styles.sizeContainer}>
-        <Text style={styles.sizeTitle}>Size</Text>
-        <View style={styles.sizeOptions}>
-          <Text style={styles.sizeOption}>S</Text>
-          <Text style={[styles.sizeOption, styles.sizeSelected]}>M</Text>
-          <Text style={styles.sizeOption}>L</Text>
+      <View style={styles.container}>
+        <Image
+          source={require('../assets/img/coffee1.png')}
+          style={styles.image} />
+        <Text style={styles.descricao}>Expresso Coffee</Text>
+        <Text style={styles.detalhe}>with Chocolate</Text>
+        <Text style={styles.description}>Description</Text>
+        <Text style={styles.texto}>A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
+          and 85 ml of fresh milk the fo.. Read More</Text>
+
+
+        <View style={styles.sizeContainer}>
+          <Text style={styles.sizeTitle}>Size</Text>
+          <View style={styles.sizeOptions}>
+            <Text style={styles.sizeOption}>S</Text>
+            <Text style={[styles.sizeOption, styles.sizeSelected]}>M</Text>
+            <Text style={styles.sizeOption}>L</Text>
+          </View>
         </View>
+        <Text style={styles.detalhe}>Price</Text>
+        <View style={styles.footer}>
+          <Text style={styles.price}>$ 4.53</Text>
+          <TouchableOpacity style={styles.buyButton}>
+            <Text style={styles.buyButtonText}>Buy Now</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
-      <Text style={styles.detalhe}>Price</Text>
-      <View style={styles.footer}>
-        <Text style={styles.price}>$ 4.53</Text>
-        <TouchableOpacity
-          style={styles.buyButton}
-          onPress={handleAddProduct}
-          disabled={loading}
-        >
-          <Text style={styles.buyButtonText}>{loading ? 'Loading...' : 'Add Product'}</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
+
+  )
 }
 
 const styles = StyleSheet.create({

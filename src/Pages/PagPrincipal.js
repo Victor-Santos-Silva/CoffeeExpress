@@ -9,7 +9,7 @@ export default function Principal() {
             <Image source={require('../assets/img/principal.png')} style={styles.image} />
             <View>
                 <Text style={styles.titulo}>Hora de uma pausa para o café....</Text>
-                <Text style={styles.texto}>Use o script para atrair nossos clientes, não se esquece de ser gentil e educado,
+                <Text style={styles.texto}>Use o script para atrair nossos clientes, não se esqueça de ser gentil e educado,
                     sempre lembrar de desejar um ótimo dia a eles, e que você também tenha um!
                 </Text>
                 <View>
