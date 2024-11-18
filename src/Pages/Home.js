@@ -1,58 +1,50 @@
-import { useNavigation } from "@react-navigation/native";
-import { ScrollView, StyleSheet, View } from "react-native";
-import Card from "../Components/Card";
-import Header from "../Components/Header"
+import React from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import Card from '../Components/Card';
+import { useNavigation } from '@react-navigation/native';
+
+const items = [
+  {
+    id: '1',
+    image: require('../assets/img/coffee1.png'),
+    title: 'Expresso Coffee',
+    subtitle: 'with Chocolate',
+    price: '$ 4.53',
+    description: 'A strong, rich espresso with a touch of chocolate.',
+  },
+  {
+    id: '2',
+    image: require('../assets/img/coffee5.png'),
+    title: 'Latte Coffee',
+    subtitle: 'with Caramel',
+    price: '$ 5.00',
+    description: 'A creamy latte blended with sweet caramel syrup.',
+  },
+];
+
 export default function Home() {
+  const navigation = useNavigation();
 
-    const navigation = useNavigation();
-
-    return (
-        <ScrollView>
-            <Header />
-            <View style={estilo.container}>
-                <Card
-                    imageSource={require('../Images/cafe com leite.png')}
-                    title="Cappuccino Tradicional"
-                    description="Cappuccino "
-                    money="R$ 8,00"
-                    onPress={() => navigation.navigate('Descricao')}
-                />
-                <Card
-                    imageSource={require('../Images/outro tipo de cappucino.png')}
-                    title="Cappuccino de Baunilha"
-                    description="Cappuccino"
-                    money="R$ 6,00"
-                    onPress={() => navigation.navigate('Descricao')}
-
-                />
-                <Card
-                    imageSource={require('../Images/cappucino.png')}
-                    title="Cappuccino de Canela"
-                    description="Cappuccino"
-                    money="R$ 6,00"
-                    onPress={() => navigation.navigate('Descricao')}
-                />
-                <Card
-                    imageSource={require('../Images/cafezinho expresso.png')}
-                    title="Cappuccino de Avelã"
-                    description="Cappuccino"
-                    money="R$ 6,00"
-                    onPress={() => navigation.navigate('Descricao')}
-                />
-
-            </View>
-        </ScrollView>
-    );
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        {items.map((item) => (
+          <Card
+            key={item.id}
+            imageSource={item.image}
+            title={item.title}
+            subtitle={item.subtitle}
+            price={item.price}
+            onPress={() => navigation.navigate('Descricao', { ...item })}
+          />
+        ))}
+      </View>
+    </ScrollView>
+  );
 }
 
-const estilo = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        padding: 10,
-    },
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
 });
-
-

@@ -1,114 +1,49 @@
-import React from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-export default function Descricao() {
+export default function Descricao({ route }) {
+  const { image, title, subtitle, price, description } = route.params;
+
   return (
-
-      <View style={styles.container}>
-        <Image
-          source={require('../assets/img/coffee1.png')}
-          style={styles.image} />
-        <Text style={styles.descricao}>Expresso Coffee</Text>
-        <Text style={styles.detalhe}>with Chocolate</Text>
-        <Text style={styles.description}>Description</Text>
-        <Text style={styles.texto}>A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
-          and 85 ml of fresh milk the fo.. Read More</Text>
-
-
-        <View style={styles.sizeContainer}>
-          <Text style={styles.sizeTitle}>Size</Text>
-          <View style={styles.sizeOptions}>
-            <Text style={styles.sizeOption}>S</Text>
-            <Text style={[styles.sizeOption, styles.sizeSelected]}>M</Text>
-            <Text style={styles.sizeOption}>L</Text>
-          </View>
-        </View>
-        <Text style={styles.detalhe}>Price</Text>
-        <View style={styles.footer}>
-          <Text style={styles.price}>$ 4.53</Text>
-          <TouchableOpacity style={styles.buyButton}>
-            <Text style={styles.buyButtonText}>Buy Now</Text>
-          </TouchableOpacity>
-        </View>
-
-      </View>
-
-  )
+    <View style={styles.container}>
+      <Image source={image} style={styles.image} />
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.subtitle}>{subtitle}</Text>
+      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.price}>Price: {price}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-    padding: 20
+    padding: 20,
+    backgroundColor: '#fff',
   },
   image: {
     width: '100%',
     height: 250,
     resizeMode: 'contain',
   },
-  descricao: {
-    fontSize: 22,
-    fontWeight: "bold"
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10,
   },
-  detalhe: {
-    paddingTop: 10,
-    fontSize: 15,
-    color: "gray"
+  subtitle: {
+    fontSize: 18,
+    color: 'gray',
+    marginBottom: 10,
   },
   description: {
-    paddingTop: 20,
-    fontSize: 19,
-    fontWeight: "bold"
-  },
-  texto: {
-    paddingTop: 10,
-    fontSize: 15
-  },
-  sizeContainer: {
-    marginBottom: 15,
-  },
-  sizeTitle: {
-    fontSize: 17,
-    fontWeight: "bold",
-    marginBottom: 10,
-    paddingTop: 15
-  },
-  sizeOptions: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  sizeOption: {
-    paddingVertical: 9,
-    paddingHorizontal: 35,
-    borderRadius: 9,
-    borderWidth: 1,
-    borderColor: '#ccc',
-  },
-  sizeSelected: {
-    backgroundColor: "#FFE5B4",
-    color: "#D2691E",
-    borderColor: "#D2691E"
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    fontSize: 16,
+    lineHeight: 22,
+    marginBottom: 20,
   },
   price: {
     fontSize: 20,
-    color: "#D2691E",
     fontWeight: 'bold',
+    color: '#D2691E',
   },
-  buyButton: {
-    backgroundColor: '#D2691E',
-    paddingVertical: 10,
-    paddingHorizontal: 55,
-    borderRadius: 30,
-  },
-  buyButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  }
 });

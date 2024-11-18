@@ -1,76 +1,43 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View, Image } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function Card(props) {
-    return (
-        <View style={estilos.card}>
-            <Image
-                source={props.imageSource}
-                style={estilos.imagem}
-            />
-            <Text style={estilos.titulo}>{props.title}</Text>
-            <Text style={estilos.descricao}>{props.description}</Text>
-            <Text style={estilos.preco}>{props.money}</Text>
-            <View style={estilos.botoes}>
-                <TouchableOpacity style={estilos.botaoSaibaMais} onPress={props.onPress}>
-                    <Text style={estilos.textoBotao}>+</Text>
-                </TouchableOpacity>
-
-            </View>
-        </View>
-    );
+export default function Card({ imageSource, title, subtitle, price, onPress }) {
+  return (
+    <TouchableOpacity style={styles.card} onPress={onPress}>
+      <Image source={imageSource} style={styles.image} />
+      <View>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.subtitle}>{subtitle}</Text>
+        <Text style={styles.price}>{price}</Text>
+      </View>
+    </TouchableOpacity>
+  );
 }
 
-const estilos = StyleSheet.create({
-    card: {
-        width: 180,
-        height: 'auto',
-        padding: 10,
-        marginBottom: 15,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        shadowColor: 'black',
-        shadowOpacity: 0.2,
-        shadowOffset: { width: 0, height: 3 },
-        shadowRadius: 3,
-        elevation: 5,
-    },
-    botaoSaibaMais: {
-        backgroundColor: '#C67C4E',
-        borderRadius: 13,
-        width: 40,
-        height: 40,
-        left: 115,
-        top: -25
-    },
-    textoBotao: {
-        color: 'white',
-        fontSize: 28,
-        textAlign: 'center',
-        fontWeight: 'bold'
-    },
-    imagem: {
-        width: 160,
-        height: 160,
-        borderRadius: 15,
-    },
-    titulo: {
-        color: '#2F2D2C',
-        fontWeight: 'bold',
-        fontSize: 20,
-        width: 180,
-    },
-    descricao: {
-        color: '#9B9B9B',
-        width: 150,
-        height: 'auto'
-    },
-    preco: {
-        fontSize: 25,
-        top: 10,
-        fontWeight: 'bold',
-        color: '#2F4B4E'
-    },
-    botoes: {
-    }
+const styles = StyleSheet.create({
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  image: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  subtitle: {
+    fontSize: 14,
+    color: 'gray',
+  },
+  price: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+  },
 });
