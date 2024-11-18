@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Card from "../Components/Card";
 import Header from "../Components/Header"
+import Carrinho from "../Components/Carrinho";
 export default function Home() {
 
     const navigation = useNavigation();
@@ -9,6 +10,7 @@ export default function Home() {
     return (
         <ScrollView>
             <Header />
+            <Carrinho />
             <View style={estilo.container}>
                 <Card
                     imageSource={require('../Images/cafe com leite.png')}
@@ -39,9 +41,8 @@ export default function Home() {
                     money="R$ 6,00"
                     onPress={() => navigation.navigate('Descricao')}
                 />
-
             </View>
-        </ScrollView>
+        </ScrollView >
     );
 }
 
