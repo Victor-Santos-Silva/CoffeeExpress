@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Card from "../Components/Card";
 import Header from "../Components/Header"
 import Carrinho from "../Components/Carrinho";
