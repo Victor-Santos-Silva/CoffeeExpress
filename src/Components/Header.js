@@ -13,7 +13,7 @@ export default function Header() {
             <Text style={estilos.tituloHeader}>Location:</Text>
             <Text style={estilos.subtitulo}>São Paulo, Brazil</Text>
             <Image
-                source={require('../assets/img/perfil-man.png')}
+                source={require('../Images/perfil-man.png')}
                 style={estilos.imagem}
             />
         </LinearGradient>
