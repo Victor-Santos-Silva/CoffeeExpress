@@ -55,5 +55,3 @@ const estilo = StyleSheet.create({
         padding: 10,
     },
 });
-
-

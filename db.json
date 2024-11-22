@@ -1,4 +1,19 @@
 {
-  "produtos": [],
+  "produtos": [
+    {
+      "id": "fc1f",
+      "name": "Expresso Coffee",
+      "description": "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk.",
+      "details": "with Chocolate",
+      "sizeOptions": [
+        "S",
+        "M",
+        "L"
+      ],
+      "selectedSize": "M",
+      "price": 4.53,
+      "image": "coffee1.png"
+    }
+  ],
   "funcionario": []
 }
