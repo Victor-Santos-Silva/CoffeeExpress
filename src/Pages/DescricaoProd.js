@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import axios from 'axios';
+import Navegacao from '../Components/Navegacao';
 
 export default function Descricao() {
   const [loading, setLoading] = useState(false);
@@ -62,6 +63,8 @@ export default function Descricao() {
           <Text style={styles.buyButtonText}>{loading ? 'Loading...' : 'Add Product'}</Text>
         </TouchableOpacity>
       </View>
+
+      <Navegacao />
     </View>
   );
 }

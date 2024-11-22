@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
+import { useNavigation } from "@react-navigation/native";
+import Navegacao from '../Components/Navegacao';
 
 export default function Lista() {
+
+
     const [lista, setLista] = useState([]);
 
     // Função para buscar produtos do servidor
@@ -33,25 +37,28 @@ export default function Lista() {
     };
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <Text style={styles.title}>Lista de Produtos</Text>
-                {lista.length > 0 ? (
-                    lista.map((produto) => (
-                        <View key={produto.id} style={styles.produtoItem}>
-                            <Text style={styles.produtoName}>{produto.name}</Text>
-                            <Text style={styles.produtoPrice}>Preço: ${produto.price.toFixed(2)}</Text>
-                            <Button 
-                                title="Excluir"
-                                color="#4324d4"
-                                onPress={() => deleteProduto(produto.id)} />
-                        </View>
-                    ))
-                ) : (
-                    <Text style={styles.noProducts}>Nenhum produto disponível.</Text>
-                )}
-            </View>
-        </ScrollView>
+        <View>
+            <ScrollView>
+                <View style={styles.container}>
+                    <Text style={styles.title}>Lista de Produtos</Text>
+                    {lista.length > 0 ? (
+                        lista.map((produto) => (
+                            <View key={produto.id} style={styles.produtoItem}>
+                                <Text style={styles.produtoName}>{produto.name}</Text>
+                                <Text style={styles.produtoPrice}>Preço: ${produto.price.toFixed(2)}</Text>
+                                <Button
+                                    title="Excluir"
+                                    color="#4324d4"
+                                    onPress={() => deleteProduto(produto.id)} />
+                            </View>
+                        ))
+                    ) : (
+                        <Text style={styles.noProducts}>Nenhum produto disponível.</Text>
+                    )}
+                </View>
+            </ScrollView>
+            <Navegacao />
+        </View>
     );
 }
 
@@ -91,5 +98,5 @@ const styles = StyleSheet.create({
         color: 'gray',
         textAlign: 'center',
         marginTop: 20,
-    },
+    }
 });
