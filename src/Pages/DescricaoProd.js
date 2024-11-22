@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import axios from 'axios';
 import Navegacao from '../Components/Navegacao';
 
 export default function Descricao() {
+  const route = useRoute();
+  const { title, description, price, imageSource } = route.params;
+
   const [loading, setLoading] = useState(false);
 
   const handleAddProduct = async () => {
     setLoading(true);
-
     const productData = {
-      name: "Expresso Coffee",
-      description: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85 ml of fresh milk.",
-      details: "with Chocolate",
-      sizeOptions: ["S", "M", "L"],
-      selectedSize: "M",
-      price: 4.53,
-      image: "coffee1.png" // Ajuste para o nome ou URL do arquivo da imagem
+      name: title,
+      description,
+      price,
+      image: imageSource,
     };
 
     try {
       const response = await axios.post('http://10.0.2.2:3000/produtos', productData);
-      Alert.alert('Success', 'Product added successfully!');
+      Alert.alert('Sucesso', 'Produto adicionado com sucesso!');
       console.log(response.data);
     } catch (error) {
-      Alert.alert('Error', 'Failed to add product.');
+      Alert.alert('Error', 'Falha ao adicionar produto.');
       console.error(error);
     } finally {
       setLoading(false);
@@ -33,18 +33,11 @@ export default function Descricao() {
 
   return (
     <View style={styles.pagina}>
-
       <View style={styles.container}>
-        <Image
-          source={require('../assets/img/coffee1.png')}
-          style={styles.image} />
-        <Text style={styles.descricao}>Expresso Coffee</Text>
-        <Text style={styles.detalhe}>with Chocolate</Text>
-        <Text style={styles.description}>Description</Text>
-        <Text style={styles.texto}>
-          A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
-          and 85 ml of fresh milk the fo.. Read More
-        </Text>
+        <Image source={imageSource} style={styles.image} />
+        <Text style={styles.descricao}>{title}</Text>
+        <Text style={styles.detalhe}>{description}</Text>
+        <Text style={styles.price}>R$ {price},00</Text>
 
         <View style={styles.sizeContainer}>
           <Text style={styles.sizeTitle}>Size</Text>
@@ -54,9 +47,8 @@ export default function Descricao() {
             <Text style={styles.sizeOption}>L</Text>
           </View>
         </View>
-        <Text style={styles.detalhe}>Price</Text>
+
         <View style={styles.footer}>
-          <Text style={styles.price}>$ 4.53</Text>
           <TouchableOpacity
             style={styles.buyButton}
             onPress={handleAddProduct}
@@ -65,11 +57,9 @@ export default function Descricao() {
             <Text style={styles.buyButtonText}>{loading ? 'Loading...' : 'Add Product'}</Text>
           </TouchableOpacity>
         </View>
-
       </View>
-        <Navegacao />
+      <Navegacao />
     </View>
-
   );
 }
 
@@ -79,8 +69,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "white",
-    padding: 20
+    backgroundColor: 'white',
+    padding: 20,
   },
   image: {
     width: '100%',
@@ -89,34 +79,31 @@ const styles = StyleSheet.create({
   },
   descricao: {
     fontSize: 22,
-    fontWeight: "bold"
+    fontWeight: 'bold',
   },
   detalhe: {
     paddingTop: 10,
     fontSize: 15,
-    color: "gray"
+    color: 'gray',
   },
-  description: {
-    paddingTop: 20,
-    fontSize: 19,
-    fontWeight: "bold"
-  },
-  texto: {
+  price: {
     paddingTop: 10,
-    fontSize: 15
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#D2691E',
   },
   sizeContainer: {
     marginBottom: 15,
   },
   sizeTitle: {
     fontSize: 17,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 10,
-    paddingTop: 15
+    paddingTop: 15,
   },
   sizeOptions: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   sizeOption: {
     paddingVertical: 9,
@@ -126,19 +113,15 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
   },
   sizeSelected: {
-    backgroundColor: "#FFE5B4",
-    color: "#D2691E",
-    borderColor: "#D2691E"
+    backgroundColor: '#FFE5B4',
+    color: '#D2691E',
+    borderColor: '#D2691E',
   },
   footer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-  },
-  price: {
-    fontSize: 20,
-    color: "#D2691E",
-    fontWeight: 'bold',
+    marginTop: 20,
   },
   buyButton: {
     backgroundColor: '#D2691E',
@@ -150,5 +133,5 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
-  }
+  },
 });

@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, Image } from 'react-native';
-import Navegacao from './Navegacao';
 
 export default function Card(props) {
     return (

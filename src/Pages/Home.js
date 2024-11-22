@@ -15,61 +15,107 @@ export default function Home() {
                     <Card
                         imageSource={require('../Images/cafe com leite.png')}
                         title="Cappuccino Tradicional"
-                        description="Cappuccino "
-                        money="R$ 8,00"
-                        onPress={() => navigation.navigate('Descricao')}
-                    />
+                        description="Cappuccino"
+                        money="R$ 4,00"
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino Tradicional",
+                            description: "Cappuccino",
+                            price: 4,
+                            imageSource: require('../Images/cafe com leite.png'),
+                        })} />
+
+
                     <Card
                         imageSource={require('../Images/outro tipo de cappucino.png')}
                         title="Cappuccino de Baunilha"
                         description="Cappuccino"
                         money="R$ 6,00"
-                        onPress={() => navigation.navigate('Descricao')}
-
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino de Baunilha",
+                            description: "Cappuccino",
+                            price: 6,
+                            imageSource: require('../Images/outro tipo de cappucino.png'),
+                        })}
                     />
+
                     <Card
                         imageSource={require('../Images/cappucino.png')}
                         title="Cappuccino de Canela"
                         description="Cappuccino"
-                        money="R$ 6,00"
-                        onPress={() => navigation.navigate('Descricao')}
+                        money="R$ 8,00"
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino de Canela",
+                            description: "Cappuccino",
+                            price: 8,
+                            imageSource: require('../Images/cappucino.png'),
+                        })}
                     />
+
                     <Card
                         imageSource={require('../Images/cafezinho expresso.png')}
                         title="Cappuccino de Avelã"
                         description="Cappuccino"
-                        money="R$ 6,00"
-                        onPress={() => navigation.navigate('Descricao')}
+                        money="R$ 10,00"
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino de Avelã",
+                            description: "Cappuccino",
+                            price: 10,
+                            imageSource: require('../Images/cafezinho expresso.png'),
+                        })}
                     />
+                    
                     <Card
                         imageSource={require('../Images/cafe com leite.png')}
                         title="Cappuccino Tradicional"
-                        description="Cappuccino "
-                        money="R$ 8,00"
-                        onPress={() => navigation.navigate('Descricao')}
-                    />
+                        description="Cappuccino"
+                        money="R$ 4,00"
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino Tradicional",
+                            description: "Cappuccino",
+                            price: 4,
+                            imageSource: require('../Images/cafe com leite.png'),
+                        })} />
+
+
                     <Card
                         imageSource={require('../Images/outro tipo de cappucino.png')}
                         title="Cappuccino de Baunilha"
                         description="Cappuccino"
                         money="R$ 6,00"
-                        onPress={() => navigation.navigate('Descricao')}
-
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino de Baunilha",
+                            description: "Cappuccino",
+                            price: 6,
+                            imageSource: require('../Images/outro tipo de cappucino.png'),
+                        })}
                     />
+
                     <Card
                         imageSource={require('../Images/cappucino.png')}
                         title="Cappuccino de Canela"
                         description="Cappuccino"
-                        money="R$ 6,00"
-                        onPress={() => navigation.navigate('Descricao')}
+                        money="R$ 8,00"
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino de Canela",
+                            description: "Cappuccino",
+                            price: 8,
+                            imageSource: require('../Images/cappucino.png'),
+                        })}
                     />
+
                     <Card
                         imageSource={require('../Images/cafezinho expresso.png')}
                         title="Cappuccino de Avelã"
                         description="Cappuccino"
-                        money="R$ 6,00"
-                        onPress={() => navigation.navigate('Descricao')}
+                        money="R$ 10,00"
+                        onPress={() => navigation.navigate('Descricao', {
+                            title: "Cappuccino de Avelã",
+                            description: "Cappuccino",
+                            price: 10,
+                            imageSource: require('../Images/cafezinho expresso.png'),
+                        })}
                     />
+
                 </View>
             </ScrollView >
             <Navegacao />

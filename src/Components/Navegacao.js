@@ -10,7 +10,7 @@ export default function Navegacao() {
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Ionicons name="home" size={24} color="black" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Lista')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Carrinho')}>
                 <Ionicons name="cart" size={24} color="black" />
             </TouchableOpacity>
         </View>
@@ -26,5 +26,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
+        borderTopWidth: 1,
+        borderTopColor: '#ddd',
     },
 });
