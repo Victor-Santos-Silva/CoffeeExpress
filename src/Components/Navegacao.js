@@ -11,7 +11,7 @@ export default function Navegacao() {
                 <Ionicons name="home" size={24} color="black" />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Lista')}>
-                <Ionicons name="list" size={24} color="black" />
+                <Ionicons name="cart" size={24} color="black" />
             </TouchableOpacity>
         </View>
     )
@@ -20,9 +20,11 @@ export default function Navegacao() {
 // Estilos
 const styles = StyleSheet.create({
     navegacao: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center", // Garante alinhamento vertical
-        height: 'auto'
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        paddingVertical: 15,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
     },
 });

@@ -37,7 +37,7 @@ export default function Lista() {
     };
 
     return (
-        <View>
+        <View style={styles.pagina}>
             <ScrollView>
                 <View style={styles.container}>
                     <Text style={styles.title}>Lista de Produtos</Text>
@@ -64,10 +64,12 @@ export default function Lista() {
 
 // Estilos
 const styles = StyleSheet.create({
+    pagina: {
+        flex: 1,
+    },
     container: {
         padding: 10,
         backgroundColor: '#fff',
-        flex: 1,
     },
     title: {
         textAlign: 'center',

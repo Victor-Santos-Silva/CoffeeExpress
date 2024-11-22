@@ -32,44 +32,51 @@ export default function Descricao() {
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/img/coffee1.png')}
-        style={styles.image} />
-      <Text style={styles.descricao}>Expresso Coffee</Text>
-      <Text style={styles.detalhe}>with Chocolate</Text>
-      <Text style={styles.description}>Description</Text>
-      <Text style={styles.texto}>
-        A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
-        and 85 ml of fresh milk the fo.. Read More
-      </Text>
+    <View style={styles.pagina}>
 
-      <View style={styles.sizeContainer}>
-        <Text style={styles.sizeTitle}>Size</Text>
-        <View style={styles.sizeOptions}>
-          <Text style={styles.sizeOption}>S</Text>
-          <Text style={[styles.sizeOption, styles.sizeSelected]}>M</Text>
-          <Text style={styles.sizeOption}>L</Text>
+      <View style={styles.container}>
+        <Image
+          source={require('../assets/img/coffee1.png')}
+          style={styles.image} />
+        <Text style={styles.descricao}>Expresso Coffee</Text>
+        <Text style={styles.detalhe}>with Chocolate</Text>
+        <Text style={styles.description}>Description</Text>
+        <Text style={styles.texto}>
+          A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
+          and 85 ml of fresh milk the fo.. Read More
+        </Text>
+
+        <View style={styles.sizeContainer}>
+          <Text style={styles.sizeTitle}>Size</Text>
+          <View style={styles.sizeOptions}>
+            <Text style={styles.sizeOption}>S</Text>
+            <Text style={[styles.sizeOption, styles.sizeSelected]}>M</Text>
+            <Text style={styles.sizeOption}>L</Text>
+          </View>
         </View>
-      </View>
-      <Text style={styles.detalhe}>Price</Text>
-      <View style={styles.footer}>
-        <Text style={styles.price}>$ 4.53</Text>
-        <TouchableOpacity
-          style={styles.buyButton}
-          onPress={handleAddProduct}
-          disabled={loading}
-        >
-          <Text style={styles.buyButtonText}>{loading ? 'Loading...' : 'Add Product'}</Text>
-        </TouchableOpacity>
-      </View>
+        <Text style={styles.detalhe}>Price</Text>
+        <View style={styles.footer}>
+          <Text style={styles.price}>$ 4.53</Text>
+          <TouchableOpacity
+            style={styles.buyButton}
+            onPress={handleAddProduct}
+            disabled={loading}
+          >
+            <Text style={styles.buyButtonText}>{loading ? 'Loading...' : 'Add Product'}</Text>
+          </TouchableOpacity>
+        </View>
 
-      <Navegacao />
+      </View>
+        <Navegacao />
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
+  pagina: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: "white",

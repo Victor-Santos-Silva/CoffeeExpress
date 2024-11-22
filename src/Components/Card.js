@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, Image } from 'react-native';
+import Navegacao from './Navegacao';
 
 export default function Card(props) {
     return (
@@ -11,11 +12,10 @@ export default function Card(props) {
             <Text style={estilos.titulo}>{props.title}</Text>
             <Text style={estilos.descricao}>{props.description}</Text>
             <Text style={estilos.preco}>{props.money}</Text>
-            <View style={estilos.botoes}>
+            <View>
                 <TouchableOpacity style={estilos.botaoSaibaMais} onPress={props.onPress}>
                     <Text style={estilos.textoBotao}>+</Text>
                 </TouchableOpacity>
-
             </View>
         </View>
     );
@@ -24,7 +24,7 @@ export default function Card(props) {
 const estilos = StyleSheet.create({
     card: {
         width: 180,
-        height: 'auto',
+        height: 300,
         padding: 10,
         marginBottom: 15,
         backgroundColor: '#fff',
@@ -70,7 +70,5 @@ const estilos = StyleSheet.create({
         top: 10,
         fontWeight: 'bold',
         color: '#2F4B4E'
-    },
-    botoes: {
     }
 });
