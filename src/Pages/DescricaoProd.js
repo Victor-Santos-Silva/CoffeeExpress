@@ -1,82 +1,65 @@
-import React, { useState } from 'react';  // Importa React e o hook useState para controle de estado
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';  // Importa componentes da interface do React Native
-import { useRoute } from '@react-navigation/native';  // Hook useRoute para acessar os parâmetros da navegação
-import axios from 'axios';  // Biblioteca axios para fazer requisições HTTP
-import Navegacao from '../Components/Navegacao';  // Componente personalizado de navegação
+import React, { useState } from 'react';
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import axios from 'axios';
+import Navegacao from '../Components/Navegacao';
 
-// Componente Descricao
 const Descricao = () => {
-  const { params } = useRoute();  // Obtém os parâmetros passados pela navegação (dados do produto)
-  const { title, description, price, imageSource } = params;  // Desestrutura os parâmetros do produto
-  const [loading, setLoading] = useState(false);  // Estado para controlar o status de carregamento
+  const { params } = useRoute();
+  const { title, description, price, imageSource } = params;
+  const [loading, setLoading] = useState(false);
 
-  // Função para adicionar o produto
   const handleAddProduct = async () => {
-    setLoading(true);  // Inicia o carregamento
+    setLoading(true);
 
-    // Resolve o URI da imagem a partir do componente Image
     const resolvedImage = Image.resolveAssetSource(imageSource).uri;
-    // Dados do produto a ser enviado
     const productData = { name: title, description, price, image: resolvedImage };
 
     try {
-      // Faz uma requisição POST para adicionar o produto ao servidor
       await axios.post('http://10.0.2.2:3000/produtos', productData);
-      Alert.alert('Sucesso', 'Produto adicionado com sucesso!');  // Exibe uma mensagem de sucesso
+      Alert.alert('Sucesso', 'Produto adicionado com sucesso!');
     } catch (error) {
-      Alert.alert('Erro', 'Falha ao adicionar produto.');  // Exibe uma mensagem de erro
-      console.error(error);  // Exibe o erro no console
+      Alert.alert('Erro', 'Falha ao adicionar produto.');
+      console.error(error);
     } finally {
-      setLoading(false);  // Finaliza o carregamento, independentemente de sucesso ou erro
+      setLoading(false);
     }
   };
 
   return (
     <View style={styles.page}>
-      {/* Exibe os detalhes do produto */}
       <ProductDetails
         title={title}
         description={description}
         price={price}
         imageSource={imageSource}
       />
-      {/* Componente para selecionar o tamanho */}
       <SizeSelector />
-      {/* Rodapé com o botão para adicionar produto */}
       <Footer onAdd={handleAddProduct} loading={loading} />
-      {/* Componente de navegação */}
       <Navegacao />
     </View>
   );
 };
 
-// Componentes reutilizáveis
+// Componentes Reutilizáveis
 
-// Exibe os detalhes do produto
 const ProductDetails = ({ title, description, price, imageSource }) => (
   <View style={styles.detailsContainer}>
-    {/* Exibe a imagem do produto */}
     <Image source={imageSource} style={styles.image} />
-    {/* Exibe o título do produto */}
     <Text style={styles.title}>{title}</Text>
-    {/* Exibe a descrição do produto */}
     <Text style={styles.description}>{description}</Text>
-    {/* Exibe o preço do produto */}
     <Text style={styles.price}>R$ {price},00</Text>
   </View>
 );
 
-// Componente para selecionar o tamanho do produto
 const SizeSelector = () => (
   <View style={styles.sizeContainer}>
-    {/* Título do seletor de tamanhos */}
     <Text style={styles.sizeTitle}>Tamanho</Text>
-    {/* Opções de tamanhos */}
     <View style={styles.sizeOptions}>
       {['P', 'M', 'G'].map((size, index) => (
         <Text
           key={index}
-          style={[styles.sizeOption, size === 'M' && styles.sizeSelected]}  // Estilo especial para o tamanho "M"
+          style={[styles.sizeOption, size === 'M' && styles.sizeSelected]}
         >
           {size}
         </Text>
@@ -85,16 +68,15 @@ const SizeSelector = () => (
   </View>
 );
 
-// Rodapé com o botão para adicionar produto
 const Footer = ({ onAdd, loading }) => (
   <View style={styles.footer}>
     <TouchableOpacity
       style={styles.buyButton}
-      onPress={onAdd}  // Chama a função para adicionar o produto
-      disabled={loading}  // Desabilita o botão durante o carregamento
+      onPress={onAdd}
+      disabled={loading}
     >
       <Text style={styles.buyButtonText}>
-        {loading ? 'Carregando...' : 'Adicionar Produto'}  // Exibe o texto de acordo com o estado de carregamento
+        {loading ? 'Carregando...' : 'Adicionar Produto'}
       </Text>
     </TouchableOpacity>
   </View>
@@ -103,73 +85,73 @@ const Footer = ({ onAdd, loading }) => (
 // Estilos
 const styles = StyleSheet.create({
   page: {
-    flex: 1,  // Faz o componente ocupar toda a tela
-    backgroundColor: 'white',  // Cor de fundo da página
-    padding: 20,  // Padding para dar espaçamento
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 20,
   },
   detailsContainer: {
-    flex: 1,  // O container ocupa toda a altura disponível
+    flex: 1,
   },
   image: {
-    width: '100%',  // A imagem ocupa toda a largura disponível
-    height: 250,  // Altura fixa da imagem
-    resizeMode: 'contain',  // A imagem será redimensionada para se ajustar sem distorção
+    width: '100%',
+    height: 250,
+    resizeMode: 'contain',
   },
   title: {
-    fontSize: 22,  // Tamanho da fonte do título
-    fontWeight: 'bold',  // Deixa o título em negrito
+    fontSize: 22,
+    fontWeight: 'bold',
   },
   description: {
-    marginTop: 10,  // Espaçamento superior
-    fontSize: 15,  // Tamanho da fonte da descrição
-    color: 'gray',  // Cor cinza para o texto
+    marginTop: 10,
+    fontSize: 15,
+    color: 'gray',
   },
   price: {
-    marginTop: 10,  // Espaçamento superior
-    fontSize: 20,  // Tamanho da fonte do preço
-    fontWeight: 'bold',  // Preço em negrito
-    color: '#D2691E',  // Cor laranja para o preço
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#D2691E',
   },
   sizeContainer: {
-    marginTop: 20,  // Espaçamento superior para o seletor de tamanho
+    marginTop: 20,
   },
   sizeTitle: {
-    fontSize: 17,  // Tamanho da fonte do título "Tamanho"
-    fontWeight: 'bold',  // Deixa o título em negrito
-    marginBottom: 10,  // Espaçamento inferior
+    fontSize: 17,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
   sizeOptions: {
-    flexDirection: 'row',  // Alinha as opções de tamanho em linha
-    justifyContent: 'space-around',  // Espaça uniformemente as opções
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   sizeOption: {
-    paddingVertical: 9,  // Espaçamento vertical
-    paddingHorizontal: 35,  // Espaçamento horizontal
-    borderRadius: 9,  // Bordas arredondadas
-    borderWidth: 1,  // Borda com 1px
-    borderColor: '#ccc',  // Cor da borda
+    paddingVertical: 9,
+    paddingHorizontal: 35,
+    borderRadius: 9,
+    borderWidth: 1,
+    borderColor: '#ccc',
   },
   sizeSelected: {
-    backgroundColor: '#FFE5B4',  // Cor de fundo para o tamanho selecionado
-    color: '#D2691E',  // Cor do texto do tamanho selecionado
-    borderColor: '#D2691E',  // Cor da borda do tamanho selecionado
+    backgroundColor: '#FFE5B4',
+    color: '#D2691E',
+    borderColor: '#D2691E',
   },
   footer: {
-    marginTop: 20,  // Espaçamento superior para o rodapé
-    flexDirection: 'row',  // Alinha o botão no centro
-    justifyContent: 'center',  // Centraliza o botão
+    marginTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   buyButton: {
-    backgroundColor: '#D2691E',  // Cor de fundo do botão
-    paddingVertical: 10,  // Padding vertical do botão
-    paddingHorizontal: 55,  // Padding horizontal do botão
-    borderRadius: 30,  // Bordas arredondadas do botão
+    backgroundColor: '#D2691E',
+    paddingVertical: 10,
+    paddingHorizontal: 55,
+    borderRadius: 30,
   },
   buyButtonText: {
-    color: '#fff',  // Cor do texto do botão
-    fontSize: 18,  // Tamanho da fonte
-    fontWeight: 'bold',  // Texto em negrito
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
-export default Descricao;  // Exporta o componente para ser usado em outras partes do aplicativo
+export default Descricao;
