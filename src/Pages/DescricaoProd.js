@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import axios from 'axios';
-import Navegacao from '../Components/Navegacao';
 
 const Descricao = () => {
   const { params } = useRoute();
-  const { title, description, price, imageSource } = params;
+
+  const { title, descriptionComplet, price, imageSource } = params;
+
   const [loading, setLoading] = useState(false);
 
   const handleAddProduct = async () => {
     setLoading(true);
 
     const resolvedImage = Image.resolveAssetSource(imageSource).uri;
-    const productData = { name: title, description, price, image: resolvedImage };
+    const productData = { name: title, descriptionComplet, price, image: resolvedImage };
 
     try {
       await axios.post('http://10.0.2.2:3000/produtos', productData);
@@ -30,36 +31,42 @@ const Descricao = () => {
     <View style={styles.page}>
       <ProductDetails
         title={title}
-        description={description}
         price={price}
         imageSource={imageSource}
       />
+      <DescricaoCompletaProduto
+        descriptionComplet={descriptionComplet}
+      />
       <SizeSelector />
-      <Footer onAdd={handleAddProduct} loading={loading} />
-      <Navegacao />
+      <Footer onAdd={handleAddProduct} loading={loading} price={price} />
     </View>
   );
 };
 
 // Componentes Reutilizáveis
 
-const ProductDetails = ({ title, description, price, imageSource }) => (
-  <View style={styles.detailsContainer}>
-    <Image source={imageSource} style={styles.image} />
-    <Text style={styles.title}>{title}</Text>
-    <Text style={styles.description}>{description}</Text>
-    <Text style={styles.price}>R$ {price},00</Text>
+const ProductDetails = ({ title, imageSource }) => (
+  <View style={styleProductDetails.detailsContainer}>
+    <Image source={imageSource} style={styleProductDetails.image} />
+    <Text style={styleProductDetails.title}>{title}</Text>
+  </View>
+);
+
+const DescricaoCompletaProduto = ({ descriptionComplet }) => (
+  <View style={stylesDescriptComplet.descriptCompletContainer}>
+    <Text style={stylesDescriptComplet.descriptCompletTitle}>Descricao:</Text>
+    <Text style={stylesDescriptComplet.descriptCompletStyle}>{descriptionComplet}</Text>
   </View>
 );
 
 const SizeSelector = () => (
-  <View style={styles.sizeContainer}>
-    <Text style={styles.sizeTitle}>Tamanho</Text>
-    <View style={styles.sizeOptions}>
+  <View style={stylesSizeSelector.sizeContainer}>
+    <Text style={stylesSizeSelector.sizeTitle}>Tamanho</Text>
+    <View style={stylesSizeSelector.sizeOptions}>
       {['P', 'M', 'G'].map((size, index) => (
         <Text
           key={index}
-          style={[styles.sizeOption, size === 'M' && styles.sizeSelected]}
+          style={[stylesSizeSelector.sizeOption, size === 'M' && stylesSizeSelector.sizeSelected]}
         >
           {size}
         </Text>
@@ -68,14 +75,17 @@ const SizeSelector = () => (
   </View>
 );
 
-const Footer = ({ onAdd, loading }) => (
-  <View style={styles.footer}>
+const Footer = ({ onAdd, loading, price }) => (
+  <View style={stylesFotter.footer}>
+    <Text style={stylesFotter.price}>
+      R$ {price ? price.toFixed(2).replace('.', ',') : '0,00'}
+    </Text>
     <TouchableOpacity
-      style={styles.buyButton}
+      style={stylesFotter.buyButton}
       onPress={onAdd}
       disabled={loading}
     >
-      <Text style={styles.buyButtonText}>
+      <Text style={stylesFotter.buyButtonText}>
         {loading ? 'Carregando...' : 'Adicionar Produto'}
       </Text>
     </TouchableOpacity>
@@ -87,33 +97,39 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 20,
   },
-  detailsContainer: {
-    flex: 1,
+})
+
+
+const stylesFotter = StyleSheet.create({
+  footer: {
+    marginTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
-  image: {
-    width: '100%',
-    height: 250,
-    resizeMode: 'contain',
+  buyButton: {
+    backgroundColor: '#E27D19',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    marginLeft: 50
   },
-  title: {
-    fontSize: 22,
+  buyButtonText: {
+    color: '#fff',
+    fontSize: 18,
     fontWeight: 'bold',
-  },
-  description: {
-    marginTop: 10,
-    fontSize: 15,
-    color: 'gray',
   },
   price: {
     marginTop: 10,
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#D2691E',
+    color: '#E27D19',
   },
+})
+
+const stylesSizeSelector = StyleSheet.create({
   sizeContainer: {
-    marginTop: 20,
+    padding: 10,
   },
   sizeTitle: {
     fontSize: 17,
@@ -136,22 +152,36 @@ const styles = StyleSheet.create({
     color: '#D2691E',
     borderColor: '#D2691E',
   },
-  footer: {
-    marginTop: 20,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  buyButton: {
-    backgroundColor: '#D2691E',
-    paddingVertical: 10,
-    paddingHorizontal: 55,
-    borderRadius: 30,
-  },
-  buyButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
 });
 
+
+const stylesDescriptComplet = StyleSheet.create({
+  descriptCompletContainer: {
+    paddingLeft: 5,
+    height: 180
+  },
+  descriptCompletTitle: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    padding: 5
+  },
+  descriptCompletStyle: {
+    padding: 5
+  },
+
+
+});
+
+const styleProductDetails = StyleSheet.create({
+  image: {
+    width: '100%',
+    height: 300,
+    resizeMode: 'cover',
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    padding: 10
+  },
+})
 export default Descricao;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Pesquisar from './Pesquisar';
 
 export default function Header() {
     return (
@@ -17,6 +18,7 @@ export default function Header() {
                 source={require('../Images/perfil-man.png')}
                 style={estilos.imagem}
             />
+            <Pesquisar />
         </LinearGradient>
     );
 }
@@ -35,11 +37,11 @@ const estilos = StyleSheet.create({
     },
 
     tituloHeader: {
-        color: "white",
+        color: "#B7B7B7",
     },
 
     subtitulo: {
-        color: "white",
+        color: "#DDDDDD",
         fontWeight: "bold",
     },
 

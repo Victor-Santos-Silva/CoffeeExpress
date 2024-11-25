@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+import { Alert, Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'
 import axios from 'axios';
 import Navegacao from '../Components/Navegacao';
 
 export default function Carrinho() {
-
-
     const [lista, setLista] = useState([]);
+    const navigation = useNavigation();
 
     // Função para buscar produtos do servidor
     const fetchProducts = async () => {
@@ -26,7 +27,7 @@ export default function Carrinho() {
     // Função para excluir produto
     const deleteProduto = async (id) => {
         try {
-        await axios.delete(`http://10.0.2.2:3000/produtos/${id}`);
+            await axios.delete(`http://10.0.2.2:3000/produtos/${id}`);
             setLista((prevLista) => prevLista.filter((produto) => produto.id !== id));
             Alert.alert('Sucesso', 'Produto excluído com sucesso!');
         } catch (error) {
@@ -110,5 +111,15 @@ const styles = StyleSheet.create({
         color: 'gray',
         textAlign: 'center',
         marginTop: 20,
-    }
+    },
+    navegacao: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        paddingVertical: 15,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderTopWidth: 1,
+        borderTopColor: '#ddd',
+    },
 });
