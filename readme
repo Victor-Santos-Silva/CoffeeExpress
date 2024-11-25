@@ -1,0 +1,2 @@
+Ativar API = json-server --watch db.json --port 3000
+Rodar o app = npx expo start

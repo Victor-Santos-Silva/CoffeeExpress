@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
-import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
+import { Alert, Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'
+import axios from 'axios';
 import Navegacao from '../Components/Navegacao';
 
-export default function Lista() {
-
-
+export default function Carrinho() {
     const [lista, setLista] = useState([]);
+    const navigation = useNavigation();
 
     // Função para buscar produtos do servidor
     const fetchProducts = async () => {
@@ -35,20 +35,26 @@ export default function Lista() {
             Alert.alert('Erro', 'Não foi possível excluir o produto.');
         }
     };
-
     return (
-        <View>
+        <View style={styles.pagina}>
             <ScrollView>
                 <View style={styles.container}>
-                    <Text style={styles.title}>Lista de Produtos</Text>
+                    <Text style={styles.title}>Produtos do Carrinho</Text>
                     {lista.length > 0 ? (
                         lista.map((produto) => (
                             <View key={produto.id} style={styles.produtoItem}>
                                 <Text style={styles.produtoName}>{produto.name}</Text>
-                                <Text style={styles.produtoPrice}>Preço: ${produto.price.toFixed(2)}</Text>
+                                <Text style={styles.produtoPrice}>
+                                    Preço: R${!isNaN(Number(produto.price)) && produto.price !== null && produto.price !== ""
+                                        ? parseFloat(produto.price).toFixed(2)
+                                        : 'Indisponível'}
+
+                                </Text>
+
+
                                 <Button
                                     title="Excluir"
-                                    color="#4324d4"
+                                    color="red"
                                     onPress={() => deleteProduto(produto.id)} />
                             </View>
                         ))
@@ -60,14 +66,21 @@ export default function Lista() {
             <Navegacao />
         </View>
     );
+
+
+
 }
 
 // Estilos
 const styles = StyleSheet.create({
+    pagina: {
+        flex: 1,
+        marginTop: 50,
+        backgroundColor: '#fff'
+    },
     container: {
         padding: 10,
         backgroundColor: '#fff',
-        flex: 1,
     },
     title: {
         textAlign: 'center',
@@ -98,5 +111,15 @@ const styles = StyleSheet.create({
         color: 'gray',
         textAlign: 'center',
         marginTop: 20,
-    }
+    },
+    navegacao: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        paddingVertical: 15,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderTopWidth: 1,
+        borderTopColor: '#ddd',
+    },
 });
