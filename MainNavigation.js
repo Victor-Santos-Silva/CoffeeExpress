@@ -8,6 +8,7 @@ import Cadastro from './src/Pages/Login';
 import Carrinho from './src/Pages/Carrinho';
 const Stack = createNativeStackNavigator();
 
+
 export default function App() {
   return (
     <NavigationContainer>
